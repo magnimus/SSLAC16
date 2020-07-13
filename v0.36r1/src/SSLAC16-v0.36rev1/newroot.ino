@@ -114,42 +114,42 @@ newCh[_ch].name);
                 [%d],\n\r\
                 [\"%s\",\"%s\",\"%s\",\"%s\"],\n\r\
                 [%d,%d,%d,%d,%d]]\n\r",
-                "\"isMode\"","\"isSetupCh\"","\"channelGroup\"","\"isAlone\"",\
-                "\"pwmFreq\"","\"EmLight\"","\"pSDA\"","\"pSCL\"","\"pOneWire\"",\
-                "\"isConn\"","\"IP\"","\"SSID\"","\"isPCA\"","\"isRCT\"",\
-                "\"is_time_set\"","\"hostname\"","\"isMaster\"","\"isSlave\"","\"ID\"","\"Sender_ID\"",\
-                isMode,isSetupCh,channelGroup,isAlone,\
-                pwmFreq,EmLight,pSDA,pSCL,pOneWire,\
-                isConn,WiFi.localIP().toString().c_str(),ssid.c_str(),isPCA,isRTC,\
-                is_time_set,esp_hostname.c_str(),isMaster,isSlave,ESP.getChipId(),sPacket.sender_id,WiFi.softAPIP().toString().c_str(),\
-                tm.Hour,tm.Minute,tm.Second,\
-                _millis/3600000/24,\ //Uptime days
-                _millis/3600000%24,\ //Uptime hours
-                _millis/60000%60,\   //Uptime minutes
-                _millis/1000%60,\    //Uptime seconds
-                Time_Zone,\
-                "isAlarm","tAlarm.index","tAlarm.temp","tAlarm.step",\
+                "\"isMode\"","\"isSetupCh\"","\"channelGroup\"","\"isAlone\"",
+                "\"pwmFreq\"","\"EmLight\"","\"pSDA\"","\"pSCL\"","\"pOneWire\"",
+                "\"isConn\"","\"IP\"","\"SSID\"","\"isPCA\"","\"isRCT\"",
+                "\"is_time_set\"","\"hostname\"","\"isMaster\"","\"isSlave\"","\"ID\"","\"Sender_ID\"",
+                isMode,isSetupCh,channelGroup,isAlone,
+                pwmFreq,EmLight,pSDA,pSCL,pOneWire,
+                isConn,WiFi.localIP().toString().c_str(),ssid.c_str(),isPCA,isRTC,
+                is_time_set,esp_hostname.c_str(),isMaster,isSlave,ESP.getChipId(),sPacket.sender_id,WiFi.softAPIP().toString().c_str(),
+                tm.Hour,tm.Minute,tm.Second,
+                _millis/3600000/24, //Uptime days
+                _millis/3600000%24, //Uptime hours
+                _millis/60000%60,   //Uptime minutes
+                _millis/1000%60,    //Uptime seconds
+                Time_Zone,
+                "isAlarm","tAlarm.index","tAlarm.temp","tAlarm.step",
                 isAlarm,tAlarm.index,tAlarm.temp,tAlarm.step,isHidePassword);
                 server.send(200,text_json,stream);
                 return;
            }
            if (server.arg(0)=="0"){
-              snprintf(stream,1024,"[[%d,%d,%d],\n\r[%d,%d,%d,%d],\n\r[%d],\n\r[%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d]]\n\r",\
-              tm.Hour,tm.Minute,tm.Second,\
-              _millis/3600000/24,\ //Uptime days
-              _millis/3600000%24,\
+              snprintf(stream,1024,"[[%d,%d,%d],\n\r[%d,%d,%d,%d],\n\r[%d],\n\r[%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d]]\n\r",
+              tm.Hour,tm.Minute,tm.Second,
+              _millis/3600000/24, //Uptime days
+              _millis/3600000%24,
               //Uptime hours
-              _millis/60000%60,\
+              _millis/60000%60,
               //Uptime minutes
-              _millis/1000%60,\
+              _millis/1000%60,
               //Uptime seconds
-              Time_Zone,\
-              newCurrent[0],newCurrent[1],newCurrent[2],newCurrent[3],newCurrent[4],newCurrent[5],newCurrent[6],newCurrent[7],\
+              Time_Zone,
+              newCurrent[0],newCurrent[1],newCurrent[2],newCurrent[3],newCurrent[4],newCurrent[5],newCurrent[6],newCurrent[7],
               newCurrent[8],newCurrent[9],newCurrent[10],newCurrent[11],newCurrent[12],newCurrent[13],newCurrent[14],newCurrent[15]);
               server.send(200,text_json,stream);
               return;
            }
-           if (server.arg(0)="1"){
+           if (server.arg(0)=="1"){
               snprintf(stream,1024,"[\
 [%d,%d,%d,%d],\n\r\
 [%d,%d,%d],\n\r\

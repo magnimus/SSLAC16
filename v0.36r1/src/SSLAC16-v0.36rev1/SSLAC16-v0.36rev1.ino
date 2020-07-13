@@ -287,7 +287,7 @@ void setup(void){
         uint32_t maxSketchSpace = (ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000;
         if (isSPIFFS) {
             SPIFFS.format();
-            if(!Update.begin(maxSketchSpace,U_SPIFFS)){//start with max available size
+            if(!Update.begin(maxSketchSpace,U_FS)){//start with max available size
               Update.printError(Serial);
             }
         } 
@@ -351,7 +351,7 @@ void setup(void){
       
      
       if (isRTC!=0) {
-          if (isRTC==1) ds1307RTC.read(tm);
+          if (isRTC==1) RTC.read(tm);
           if (isRTC==2) readPCF8563(tm);  
           
         }// else Serial.println(F("Time may be wrong !!!"));
@@ -378,7 +378,7 @@ void setup(void){
           }
       }
  
-    if (WiFi.localIP()!=0) isConn=true; else isConn=false;
+    if (WiFi.localIP()!=0UL) isConn=true; else isConn=false;
     if (isConn) {
           if (ssid!=WiFi.SSID()) ssid=WiFi.SSID();
           udp.begin(localPort);
@@ -391,7 +391,7 @@ void setup(void){
       
     Serial.println("SSLAC16 ver"+String(version[0])+"."+String(version[1])+"rev"+String(version[2]));
     slave_udp.begin(8266);
-  if (WiFi.localIP()!=0) {
+  if (WiFi.localIP()!=0UL) {
     
     //------------------------------------------
     IPAddress tmp_ip;
